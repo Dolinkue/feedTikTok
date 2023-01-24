@@ -16,15 +16,25 @@ class TikTokVideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for _ in  0..<10 {
-            let model = VideoModel(captiomn: "flow", userName: "Nico", audiotrackName: "ios sound", videoFileName: "video", videoFileFormat: "mov")
-            data.append(model)
-        }
+        
+        let model = VideoModel(captiomn: "flow", userName: "@Nico", audiotrackName: "ios sound", videoFileName: "video", videoFileFormat: "mov")
+        let model2 = VideoModel(captiomn: "flow", userName: "@Carmela", audiotrackName: "video sound", videoFileName: "video2", videoFileFormat: "MP4")
+        let model3 = VideoModel(captiomn: "flow", userName: "@Moro", audiotrackName: "video sound", videoFileName: "video3", videoFileFormat: "MP4")
+        let model4 = VideoModel(captiomn: "flow", userName: "@Chira", audiotrackName: "video sound", videoFileName: "video4", videoFileFormat: "MP4")
+        data.append(model)
+        data.append(model2)
+        data.append(model3)
+        data.append(model4)
+        
+        print(data)
+        
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
         layout.sectionInset = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -40,7 +50,7 @@ class TikTokVideoViewController: UIViewController {
     }
     
 }
-extension TikTokVideoViewController: UICollectionViewDataSource {
+extension TikTokVideoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
@@ -51,8 +61,36 @@ extension TikTokVideoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as! VideoCollectionViewCell
         
         cell.configure(with: model)
+        cell.delegate = self
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: view.frame.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("hola")
+    }
+    
+}
+
+extension TikTokVideoViewController: VideoCollectionViewCellDelegate {
+    func didTapLikeButton(with model: VideoModel) {
+        print("like tap")
+    }
+    
+    func didTapProfileButton(with model: VideoModel) {
+        print("like Profile")
+    }
+    
+    func didTapCommentButton(with model: VideoModel) {
+        print("comment tap")
+    }
+    
+    func didTapShareButton(with model: VideoModel) {
+        print("share tap")
     }
     
     

@@ -32,7 +32,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
         label.textColor = .white
         return label
     }()
-    private let CaptionNameLabel: UILabel = {
+    private let captionNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .white
@@ -47,26 +47,34 @@ class VideoCollectionViewCell: UICollectionViewCell {
     
     // Buttons
     
-    private var profileButton: UIButton = {
+    private var playButton: UIButton = {
         let button = UIButton()
-        
+        button.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
+        button.tintColor = .white
         return button
     }()
     private var likeButton: UIButton = {
         let button = UIButton()
-        
+        button.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = .white
         return button
     }()
     private var commentButton: UIButton = {
         let button = UIButton()
-        
+        button.setBackgroundImage(UIImage(systemName: "message"), for: .normal)
+        button.tintColor = .white
         return button
     }()
     private var shareButton: UIButton = {
         let button = UIButton()
-        
+        button.setBackgroundImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.tintColor = .white
         return button
     }()
+    
+    private let videoContainer = UIView()
+    
+    
     // Delegates
     
     var delegate: VideoCollectionViewCellDelegate?
@@ -83,15 +91,30 @@ class VideoCollectionViewCell: UICollectionViewCell {
     }
     
     private func addSubview(){
+        contentView.addSubview(videoContainer)
         contentView.addSubview(videoNameLabel)
-        contentView.addSubview(CaptionNameLabel)
+        contentView.addSubview(captionNameLabel)
         contentView.addSubview(audioNameLabel)
         
-        contentView.addSubview(profileButton)
+        contentView.addSubview(playButton)
         contentView.addSubview(likeButton)
         contentView.addSubview(commentButton)
         contentView.addSubview(shareButton)
+        
+        // actions
+        
+        likeButton.addTarget(self, action: #selector(didTapLikeButton), for: .touchDown)
+        playButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchDown)
+        commentButton.addTarget(self, action: #selector(didTapCommentButton), for: .touchDown)
+        shareButton.addTarget(self, action: #selector(didTapShareButton), for: .touchDown)
+        
+        videoContainer.clipsToBounds = true
+        contentView.sendSubviewToBack(videoContainer)
     }
+    
+    
+    
+
     
     @objc private func didTapLikeButton () {
         guard let model = model else {return}
@@ -115,6 +138,33 @@ class VideoCollectionViewCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        videoContainer.frame = contentView.bounds
+        
+        let size = contentView.frame.size.width/9
+        let width = contentView.frame.size.width
+        let height = contentView.frame.size.height - 100
+        
+        // button
+        shareButton.frame = CGRect(x: width-size, y: height-(size)-10, width: 40, height: 40)
+        commentButton.frame = CGRect(x: width-size, y: height-(size*2)-10, width: 40, height: 40)
+        likeButton.frame = CGRect(x: width-size, y: height-(size*3)-10, width: 40, height: 40)
+        playButton.frame = CGRect(x: width-size, y: height-(size*4)-10, width: 40, height: 40)
+        
+        // label
+        audioNameLabel.frame = CGRect(x: 5, y: height-20, width: width-10, height: 50)
+        captionNameLabel.frame = CGRect(x: 5, y: height-60, width: width-10, height: 50)
+        videoNameLabel.frame = CGRect(x: 5, y: height-100, width: width-10, height: 50)
+        
+    }
+    
+    // con esto se corrige el error de reutilizar las celdas
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        captionNameLabel.text = nil
+        audioNameLabel.text = nil
+        videoNameLabel.text = nil
+        
     }
     
     required init?(coder: NSCoder) {
@@ -126,10 +176,14 @@ class VideoCollectionViewCell: UICollectionViewCell {
         
         configureVideo()
         
+        // labels
+        captionNameLabel.text = model.captiomn
+        audioNameLabel.text = model.audiotrackName
+        videoNameLabel.text = model.userName
         
     }
     
-    private func configureVideo() {
+    public func configureVideo() {
         
         guard let model = model else {return}
         
@@ -143,8 +197,9 @@ class VideoCollectionViewCell: UICollectionViewCell {
         playerView.player = player
         playerView.frame = contentView.bounds
         playerView.videoGravity = .resizeAspectFill
-        contentView.layer.addSublayer(playerView)
-        player?.volume = 0
+        videoContainer.layer.addSublayer(playerView)
+        
+        player?.volume = 0.5
         player?.play()
     }
     

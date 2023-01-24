@@ -15,3 +15,4 @@ struct VideoModel {
     let videoFileName: String
     let videoFileFormat: String
 }
+

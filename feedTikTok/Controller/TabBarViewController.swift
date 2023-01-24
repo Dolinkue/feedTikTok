@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController {
         vc3.title = "Catalogo"
 
         vc1.navigationItem.largeTitleDisplayMode = .always
-        vc2.navigationItem.largeTitleDisplayMode = .always
+        vc2.navigationItem.largeTitleDisplayMode = .never
         vc3.navigationItem.largeTitleDisplayMode = .always
 
         let nav1 = UINavigationController(rootViewController: vc1)
@@ -33,19 +33,17 @@ class TabBarViewController: UITabBarController {
         nav3.navigationBar.tintColor = .label
 
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Que Ver", image: UIImage(systemName: "magnifyingglass"), tag: 1)
-        nav3.tabBarItem = UITabBarItem(title: "Catalogo", image: UIImage(systemName: "music.note.list"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Que Ver", image: UIImage(systemName: "play"), tag: 1)
+        nav3.tabBarItem = UITabBarItem(title: "Catalogo", image: UIImage(systemName: "list.triangle"), tag: 1)
 
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
         nav3.navigationBar.prefersLargeTitles = true
         
-        tabBar.backgroundColor = .systemGray
+        tabBar.backgroundColor = .gray
+        tabBar.layer.opacity = 0.8
         
-
         setViewControllers([nav1, nav2, nav3], animated: false)
     }
-    
-
 
 }
