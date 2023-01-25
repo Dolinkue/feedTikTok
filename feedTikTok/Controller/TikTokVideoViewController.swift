@@ -88,32 +88,26 @@ extension TikTokVideoViewController: UICollectionViewDataSource, UICollectionVie
                 videoCell.isPlaying = true
             }
         }
-        
-
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)  {
         if let videoCell = cell as? VideoCollectionViewCell {
                 let model = data[indexPath.item]
                 if model.videoFileName != nil {
-                //    videoCell.player?.volume = 0
                     videoCell.player?.pause()
                     videoCell.isPlaying = false
                 }
-            }
-
+        }
     }
-    
 }
 
 extension TikTokVideoViewController: VideoCollectionViewCellDelegate {
     func didTapLikeButton(with model: VideoModel) {
-        print("like tap")
+        print("like Profile")
     }
     
     func didTapProfileButton(with model: VideoModel) {
-        print("like Profile")
+        print("see movie")
     }
     
     func didTapCommentButton(with model: VideoModel) {
@@ -123,6 +117,5 @@ extension TikTokVideoViewController: VideoCollectionViewCellDelegate {
     func didTapShareButton(with model: VideoModel) {
         print("share tap")
     }
-    
     
 }

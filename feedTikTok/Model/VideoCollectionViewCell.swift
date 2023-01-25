@@ -116,9 +116,6 @@ class VideoCollectionViewCell: UICollectionViewCell {
     }
     
     
-    
-
-    
     @objc private func didTapLikeButton () {
         guard let model = model else {return}
         delegate?.didTapLikeButton(with: model)
@@ -201,7 +198,6 @@ class VideoCollectionViewCell: UICollectionViewCell {
         playerView.frame = contentView.bounds
         playerView.videoGravity = .resizeAspectFill
         videoContainer.layer.addSublayer(playerView)
-        let vc = TikTokVideoViewController()
         
     }
 }
