@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class TikTokVideoViewController: UIViewController {
     
     private var collectionView: UICollectionView?
     
     private var data = [VideoModel]()
+    
+    
+    var player: AVPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +41,11 @@ class TikTokVideoViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.isPagingEnabled = true
         collectionView?.dataSource = self
+        collectionView?.delegate = self
         collectionView?.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
         view.addSubview(collectionView!)
     }
@@ -71,7 +77,32 @@ extension TikTokVideoViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("hola")
+        if let videoCell = cell as? VideoCollectionViewCell {
+            let model = data[indexPath.item]
+            if model.videoFileFormat != nil {
+                if videoCell.isPlaying {
+                    videoCell.player?.pause()
+                    videoCell.player?.seek(to: CMTime.zero)
+                }
+                videoCell.player?.play()
+                videoCell.isPlaying = true
+            }
+        }
+        
+
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)  {
+        if let videoCell = cell as? VideoCollectionViewCell {
+                let model = data[indexPath.item]
+                if model.videoFileName != nil {
+                //    videoCell.player?.volume = 0
+                    videoCell.player?.pause()
+                    videoCell.isPlaying = false
+                }
+            }
+
     }
     
 }

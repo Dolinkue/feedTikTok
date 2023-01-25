@@ -25,6 +25,8 @@ class VideoCollectionViewCell: UICollectionViewCell {
     
     private var model: VideoModel?
     
+    var isPlaying: Bool = false
+    
     // Labels
     private let videoNameLabel: UILabel = {
         let label = UILabel()
@@ -78,6 +80,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
     // Delegates
     
     var delegate: VideoCollectionViewCellDelegate?
+    var play: AVPlayer?
     
     
     weak var player: AVPlayer?
@@ -198,10 +201,8 @@ class VideoCollectionViewCell: UICollectionViewCell {
         playerView.frame = contentView.bounds
         playerView.videoGravity = .resizeAspectFill
         videoContainer.layer.addSublayer(playerView)
+        let vc = TikTokVideoViewController()
         
-        player?.volume = 0.5
-        player?.play()
     }
-    
-    
 }
+
