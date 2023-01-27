@@ -17,7 +17,7 @@
 		6FE16492297DC92C008FFB01 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE16491297DC92C008FFB01 /* TabBarViewController.swift */; };
 		6FE16494297DC97A008FFB01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE16493297DC97A008FFB01 /* HomeViewController.swift */; };
 		6FE16496297DC9B6008FFB01 /* TikTokVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE16495297DC9B6008FFB01 /* TikTokVideoViewController.swift */; };
-		6FE16498297DC9FE008FFB01 /* PeliculasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE16497297DC9FE008FFB01 /* PeliculasViewController.swift */; };
+		6FE16498297DC9FE008FFB01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE16497297DC9FE008FFB01 /* SettingsViewController.swift */; };
 		6FE1649B297DCE31008FFB01 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1649A297DCE31008FFB01 /* VideoCollectionViewCell.swift */; };
 		6FE1649E297DCEC2008FFB01 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE1649D297DCEC2008FFB01 /* VideoModel.swift */; };
 		6FE164A5297EEE9D008FFB01 /* video2.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 6FE164A4297EEE9D008FFB01 /* video2.MP4 */; };
@@ -25,6 +25,7 @@
 		6FE164A9297EEEBA008FFB01 /* video3.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 6FE164A7297EEEBA008FFB01 /* video3.MP4 */; };
 		6FE164BC2981BBEE008FFB01 /* TitleHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE164BB2981BBEE008FFB01 /* TitleHeaderCollectionReusableView.swift */; };
 		6FE164BF2981BCB8008FFB01 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE164BE2981BCB8008FFB01 /* Extensions.swift */; };
+		6FE164C429842FDE008FFB01 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE164C329842FDE008FFB01 /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,7 @@
 		6FE16491297DC92C008FFB01 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6FE16493297DC97A008FFB01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6FE16495297DC9B6008FFB01 /* TikTokVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokVideoViewController.swift; sourceTree = "<group>"; };
-		6FE16497297DC9FE008FFB01 /* PeliculasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeliculasViewController.swift; sourceTree = "<group>"; };
+		6FE16497297DC9FE008FFB01 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6FE1649A297DCE31008FFB01 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FE1649D297DCEC2008FFB01 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		6FE164A4297EEE9D008FFB01 /* video2.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video2.MP4; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		6FE164A7297EEEBA008FFB01 /* video3.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video3.MP4; sourceTree = "<group>"; };
 		6FE164BB2981BBEE008FFB01 /* TitleHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		6FE164BE2981BCB8008FFB01 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6FE164C329842FDE008FFB01 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,7 @@
 				6FE16491297DC92C008FFB01 /* TabBarViewController.swift */,
 				6FE16493297DC97A008FFB01 /* HomeViewController.swift */,
 				6FE16495297DC9B6008FFB01 /* TikTokVideoViewController.swift */,
-				6FE16497297DC9FE008FFB01 /* PeliculasViewController.swift */,
+				6FE16497297DC9FE008FFB01 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6FE1649A297DCE31008FFB01 /* VideoCollectionViewCell.swift */,
+				6FE164C329842FDE008FFB01 /* Section.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,7 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FE16494297DC97A008FFB01 /* HomeViewController.swift in Sources */,
-				6FE16498297DC9FE008FFB01 /* PeliculasViewController.swift in Sources */,
+				6FE16498297DC9FE008FFB01 /* SettingsViewController.swift in Sources */,
 				6FE16492297DC92C008FFB01 /* TabBarViewController.swift in Sources */,
 				6FE16496297DC9B6008FFB01 /* TikTokVideoViewController.swift in Sources */,
 				6FE1649E297DCEC2008FFB01 /* VideoModel.swift in Sources */,
@@ -219,6 +222,7 @@
 				6FE1647B297D87E6008FFB01 /* AppDelegate.swift in Sources */,
 				6FE164BC2981BBEE008FFB01 /* TitleHeaderCollectionReusableView.swift in Sources */,
 				6FE1649B297DCE31008FFB01 /* VideoCollectionViewCell.swift in Sources */,
+				6FE164C429842FDE008FFB01 /* Section.swift in Sources */,
 				6FE164BF2981BCB8008FFB01 /* Extensions.swift in Sources */,
 				6FE1647D297D87E6008FFB01 /* SceneDelegate.swift in Sources */,
 			);

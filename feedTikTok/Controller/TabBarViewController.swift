@@ -14,11 +14,11 @@ class TabBarViewController: UITabBarController {
 
         let vc1 = HomeViewController()
         let vc2 = TikTokVideoViewController()
-        let vc3 = PeliculasViewController()
+        let vc3 = SettingsViewController()
 
         vc1.title = "Home"
         vc2.title = "Que Ver"
-        vc3.title = "Catalogo"
+        vc3.title = "Ajustes"
 
         vc1.navigationItem.largeTitleDisplayMode = .always
         vc2.navigationItem.largeTitleDisplayMode = .never
@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
 
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: "Que Ver", image: UIImage(systemName: "play"), tag: 1)
-        nav3.tabBarItem = UITabBarItem(title: "Catalogo", image: UIImage(systemName: "list.triangle"), tag: 1)
+        nav3.tabBarItem = UITabBarItem(title: "Ajustes", image: UIImage(systemName: "gear"), tag: 1)
 
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
